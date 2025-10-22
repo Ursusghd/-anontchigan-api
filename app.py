@@ -822,24 +822,6 @@ if question := st.chat_input("Posez votre question sur le cancer du sein..."):
                 # Afficher la réponse
                 st.markdown(answer)
                 
-                # Afficher les métadonnées (optionnel)
-                with st.expander("📊 Détails Techniques de la Réponse"):
-                    method_emoji = {
-                        "groq_generated": "🤖",
-                        "json_direct": "📚",
-                        "salutation": "👋",
-                        "fallback": "⚠️",
-                        "error_fallback": "❌"
-                    }
-                    emoji = method_emoji.get(method, "ℹ️")
-                    
-                    st.markdown(f"**{emoji} Méthode:** `{method}`")
-                    if score is not None:
-                        score_percent = score * 100
-                        st.markdown(f"**🎯 Score de similarité:** `{score:.3f}` ({score_percent:.1f}%)")
-                        st.progress(score)
-                    st.markdown(f"**👤 ID Utilisateur:** `{st.session_state.user_id}`")
-                
                 # Ajouter à l'historique
                 st.session_state.messages.append({"role": "assistant", "content": answer})
                 
