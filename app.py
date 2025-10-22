@@ -51,9 +51,14 @@ class GroqService:
         try:
             from groq import Groq
             
-            api_key = os.getenv("GROQ_API_KEY")
+            # Essayer d'abord st.secrets (Streamlit Cloud), puis .env (local)
+            try:
+                api_key = st.secrets.get("GROQ_API_KEY")
+            except:
+                api_key = os.getenv("GROQ_API_KEY")
+            
             if not api_key:
-                logger.warning("Clé API Groq manquante - Veuillez configurer GROQ_API_KEY dans le fichier .env")
+                logger.warning("Clé API Groq manquante - Veuillez configurer GROQ_API_KEY dans Streamlit Secrets ou le fichier .env")
                 return
             
             self.client = Groq(api_key=api_key)
