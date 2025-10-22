@@ -21,7 +21,7 @@ Elle combine la recherche sémantique (RAG) et la génération de texte via **Ll
 ### 1️⃣ Cloner le dépôt
 
 ```bash
-git clone https://github.com/<ton-utilisateur>/anontchigan-api.git
+git clone  https://github.com/Ursusghd/-anontchigan-api
 cd anontchigan-api
 ```
 
